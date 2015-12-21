@@ -1,0 +1,33 @@
+//
+//  iWebCrawler.pch
+//  iWebCrawler
+//
+//  Created by Oleksandr Dodatko on 21/12/2015.
+//  Copyright © 2015 dodikk. All rights reserved.
+//
+
+#ifndef iWebCrawler_pch
+#define iWebCrawler_pch
+
+#ifdef __OBJC__
+    #ifdef __cplusplus
+    #endif // Obj-C++
+
+    #import <iWebCrawlerKit/iWebCrawlerKit.h>
+
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif //__OBJC__
+
+
+#ifdef __cplusplus
+    // Pure c++ headers ho here
+#endif //__cplusplus
+
+
+// Pure C headers go here
+
+
+
+
+#endif /* iWebCrawler_pch */
