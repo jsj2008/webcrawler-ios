@@ -7,25 +7,38 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <iWebCrawlerKit/Settings/WCSettingsState.h>
+#import <iWebCrawlerKit/Model/WCSearchStatus.h>
 
 @protocol WCSettingsVMDelegate;
 
-@protocol WCSettingsVM <NSObject>
+@protocol WCSettingsVM <WCSettingsState>
 
+/**
+ Typically a weak property
+ */
 -(id<WCSettingsVMDelegate>)vcDelegate;
+
+/**
+ @param vcDelegate Typically a weak property
+ */
 -(void)setVcDelegate:(id<WCSettingsVMDelegate>)vcDelegate;
 
+/**
+ The user has tapped the "start" button
+ */
 -(void)startButtonTapped;
+
+/**
+ The user has tapped the "stop" button
+ */
 -(void)stopButtonTapped;
+
+-(WCSearchStatus)status;
 
 -(void)searchTermDidChange:(NSString*)newValue;
 -(void)rootUrlForSearchDidChange:(NSString*)newValue;
 -(void)maxThreadCountDidChange:(NSUInteger)newValue;
 -(void)maxWebPageCountDidChange:(NSUInteger)newValue;
-
--(NSString*)searchTerm;
--(NSString*)rootUrlForSearch;
--(NSUInteger)maxThreadCount;
--(NSUInteger)maxWebPageCount;
 
 @end

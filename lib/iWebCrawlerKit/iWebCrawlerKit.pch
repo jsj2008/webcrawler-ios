@@ -13,6 +13,10 @@
         #ifdef __cplusplus
         #endif // Obj-C++
 
+        #import "WCSettingsStatePOD.h"
+        #import "WCSettingsVMDelegate.h"
+        
+
         #import <Foundation/Foundation.h>
     #endif //__OBJC__
 

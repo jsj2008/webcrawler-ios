@@ -7,7 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <iWebCrawlerKit/Settings/WCSettingsVM.h>
 
-@interface WCSettingsVMImpl : NSObject
+
+@interface WCSettingsVMImpl : NSObject<WCSettingsVM>
+
+-(instancetype)init NS_UNAVAILABLE;
++(instancetype)new NS_UNAVAILABLE;
+
+-(instancetype)initWithDefaultState:(id<WCSettingsState>)initialState
+NS_REQUIRES_SUPER
+NS_DESIGNATED_INITIALIZER
+__attribute__((nonnull));
+
+@property (nonatomic, weak) id<WCSettingsVMDelegate> vcDelegate;
 
 @end
