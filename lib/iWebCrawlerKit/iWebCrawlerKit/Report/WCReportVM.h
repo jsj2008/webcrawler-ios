@@ -7,7 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <iWebCrawlerKit/Report/WCReportState.h>
 
-@protocol WCReportVM <NSObject>
+@protocol WCReportVMDelegate;
+
+
+@protocol WCReportVM <NSObject, WCReportState>
+
+/**
+ Typically a weak property
+ */
+-(id<WCReportVMDelegate>)vcDelegate;
+
+/**
+ @param vcDelegate Typically a weak property
+ */
+-(void)setVcDelegate:(id<WCReportVMDelegate>)vcDelegate;
+
 
 @end

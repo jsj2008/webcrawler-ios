@@ -41,7 +41,7 @@
     }
     
     self->_model = model;
-    [self->_model setVmDelegate: self];
+    [self->_model addVmDelegate: self];
     
     return self;
 }
@@ -64,7 +64,8 @@
 didDownloadPageContents:(id)pageContents
             forUrl:(NSString*)pageUrl
 {
-    [self doesNotRecognizeSelector: _cmd];
+    // IDLE
+    // ReportVC should handle this
 }
 
 
@@ -72,7 +73,8 @@ didDownloadPageContents:(id)pageContents
 didParseReachablePages:(NSArray*)reachablePages
             forUrl:(NSString*)pageUrl
 {
-    [self doesNotRecognizeSelector: _cmd];
+    // IDLE
+    // ReportVC should handle this
 }
 
 
@@ -81,7 +83,8 @@ didParseReachablePages:(NSArray*)reachablePages
 didParseSearchTermEntries:(NSUInteger)foundResultsCount
             forUrl:(NSString*)pageUrl
 {
-    [self doesNotRecognizeSelector: _cmd];
+    // IDLE
+    // ReportVC should handle this
 }
 
 

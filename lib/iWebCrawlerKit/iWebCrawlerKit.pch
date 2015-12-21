@@ -18,6 +18,7 @@
         #import "WCSettingsVMDelegate.h"
         #import "WCSearchModel.h"
         #import "WCSearchModelDelegate.h"
+        #import "WCReportVMDelegate.h"
         #import <iWebCrawlerKit/Model/WCSearchStatus.h>
 
 

@@ -7,7 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <iWebCrawlerKit/Report/WCReportVM.h>
 
-@interface WCReportVMImpl : NSObject
+@protocol WCSearchModel;
+@protocol WCReportVMDelegate;
+
+
+@interface WCReportVMImpl : NSObject<WCReportVM>
+
+-(instancetype)init NS_UNAVAILABLE;
++(instancetype)new NS_UNAVAILABLE;
+
+
+-(instancetype)initWithModel:(id<WCSearchModel>)model
+NS_REQUIRES_SUPER
+NS_DESIGNATED_INITIALIZER
+__attribute__((nonnull));
+
+@property (nonatomic, weak) id<WCReportVMDelegate> vcDelegate;
 
 @end

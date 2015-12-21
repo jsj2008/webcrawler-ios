@@ -15,8 +15,14 @@
 
 @protocol WCSearchModel <NSObject>
 
--(id<WCSearchModelDelegate>)vmDelegate;
--(void)setVmDelegate:(id<WCSearchModelDelegate>)delegate;
+//-(id<WCSearchModelDelegate>)vmDelegate;
+
+/**
+ Multiple delegates are allowed.
+ Since the model is shared across several ViewModel classes
+ */
+-(void)addVmDelegate:(id<WCSearchModelDelegate>)delegate;
+
 
 -(void)startWithSettings:(id<WCSettingsState>)settings;
 -(void)terminate;
