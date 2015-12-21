@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  FirstViewController.h
 //  iWebCrawler
 //
 //  Created by Oleksandr Dodatko on 21/12/2015.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface WCSearchVC : UIViewController
 
 
 @end

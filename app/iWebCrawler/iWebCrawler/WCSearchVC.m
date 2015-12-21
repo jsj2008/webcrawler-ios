@@ -1,18 +1,18 @@
 //
-//  SecondViewController.m
+//  FirstViewController.m
 //  iWebCrawler
 //
 //  Created by Oleksandr Dodatko on 21/12/2015.
 //  Copyright © 2015 dodikk. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "WCSearchVC.h"
 
-@interface SecondViewController ()
+@interface WCSearchVC ()
 
 @end
 
-@implementation SecondViewController
+@implementation WCSearchVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
