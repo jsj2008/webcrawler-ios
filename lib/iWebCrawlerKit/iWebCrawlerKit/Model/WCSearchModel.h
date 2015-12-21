@@ -22,7 +22,7 @@
  Since the model is shared across several ViewModel classes
  */
 -(void)addVmDelegate:(id<WCSearchModelDelegate>)delegate;
-
+-(void)clearDelegateList;
 
 -(void)startWithSettings:(id<WCSettingsState>)settings;
 -(void)terminate;

@@ -27,7 +27,8 @@
 
 
     #ifdef __cplusplus
-    // Pure c++ headers ho here
+        // Pure c++ headers ho here
+        #include <vector>
     #endif //__cplusplus
 
 
