@@ -11,7 +11,7 @@
 		7E9EEE5D1C285ABE00E3BD0C /* WCSettingsVMImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EEE5C1C285ABE00E3BD0C /* WCSettingsVMImpl.m */; };
 		7EB8A6F91C2872A600A80BB8 /* WCReportVMImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB8A6F81C2872A600A80BB8 /* WCReportVMImpl.m */; };
 		7EB8A6FD1C28753100A80BB8 /* WCSettingsStatePOD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB8A6FC1C28753000A80BB8 /* WCSettingsStatePOD.m */; };
-		7EB8A7051C28B92F00A80BB8 /* WCSearchModelImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB8A7041C28B92F00A80BB8 /* WCSearchModelImpl.m */; };
+		7EB8A7051C28B92F00A80BB8 /* WCSearchModelImpl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7EB8A7041C28B92F00A80BB8 /* WCSearchModelImpl.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,7 +47,7 @@
 		7EB8A7011C287D7800A80BB8 /* WCSearchModelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCSearchModelDelegate.h; sourceTree = "<group>"; };
 		7EB8A7021C28B67C00A80BB8 /* WCReportState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCReportState.h; sourceTree = "<group>"; };
 		7EB8A7031C28B92F00A80BB8 /* WCSearchModelImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCSearchModelImpl.h; sourceTree = "<group>"; };
-		7EB8A7041C28B92F00A80BB8 /* WCSearchModelImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCSearchModelImpl.m; sourceTree = "<group>"; };
+		7EB8A7041C28B92F00A80BB8 /* WCSearchModelImpl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WCSearchModelImpl.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +122,7 @@
 				7EB8A7001C287D3500A80BB8 /* WCSearchModel.h */,
 				7EB8A7011C287D7800A80BB8 /* WCSearchModelDelegate.h */,
 				7EB8A7031C28B92F00A80BB8 /* WCSearchModelImpl.h */,
-				7EB8A7041C28B92F00A80BB8 /* WCSearchModelImpl.m */,
+				7EB8A7041C28B92F00A80BB8 /* WCSearchModelImpl.mm */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -184,7 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EB8A6F91C2872A600A80BB8 /* WCReportVMImpl.m in Sources */,
-				7EB8A7051C28B92F00A80BB8 /* WCSearchModelImpl.m in Sources */,
+				7EB8A7051C28B92F00A80BB8 /* WCSearchModelImpl.mm in Sources */,
 				7E9EEE5D1C285ABE00E3BD0C /* WCSettingsVMImpl.m in Sources */,
 				7EB8A6FD1C28753100A80BB8 /* WCSettingsStatePOD.m in Sources */,
 			);
