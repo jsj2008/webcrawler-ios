@@ -13,9 +13,13 @@
         #ifdef __cplusplus
         #endif // Obj-C++
 
+
         #import "WCSettingsStatePOD.h"
         #import "WCSettingsVMDelegate.h"
-        
+        #import "WCSearchModel.h"
+        #import "WCSearchModelDelegate.h"
+        #import <iWebCrawlerKit/Model/WCSearchStatus.h>
+
 
         #import <Foundation/Foundation.h>
     #endif //__OBJC__

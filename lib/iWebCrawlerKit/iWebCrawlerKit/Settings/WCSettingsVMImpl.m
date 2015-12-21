@@ -8,14 +8,23 @@
 
 #import "WCSettingsVMImpl.h"
 
+@interface WCSettingsVMImpl() <WCSearchModelDelegate>
+@end
+
 @implementation WCSettingsVMImpl
 {
     id<WCSettingsState> _initialState;
     WCSettingsStatePOD* _currentState;
+    
+    id<WCSearchModel> _model;
 }
 
 -(instancetype)initWithDefaultState:(id<WCSettingsState>)initialState
+                              model:(id<WCSearchModel>)model
 {
+    NSParameterAssert(nil != initialState);
+    NSParameterAssert(nil != model       );
+    
     self = [super init];
     if (nil == self)
     {
@@ -31,8 +40,50 @@
         self->_currentState.maxWebPageCount  = [initialState maxWebPageCount ];
     }
     
+    self->_model = model;
+    [self->_model setVmDelegate: self];
+    
     return self;
 }
+
+#pragma mark - WCSearchModelDelegate
+
+-(void)searchModelDidFinishLoading:(id<WCSearchModel>)sender
+{
+    id<WCSettingsVMDelegate> strongDelegate = self.vcDelegate;
+    [strongDelegate settingsVMDidFinishSearch: self];
+}
+
+-(void)searchModelDidTerminate:(id<WCSearchModel>)sender
+{
+    id<WCSettingsVMDelegate> strongDelegate = self.vcDelegate;
+    [strongDelegate settingsVMDidTerminateSearch: self];
+}
+
+-(void)searchModel:(id<WCSearchModel>)sender
+didDownloadPageContents:(id)pageContents
+            forUrl:(NSString*)pageUrl
+{
+    [self doesNotRecognizeSelector: _cmd];
+}
+
+
+-(void)searchModel:(id<WCSearchModel>)sender
+didParseReachablePages:(NSArray*)reachablePages
+            forUrl:(NSString*)pageUrl
+{
+    [self doesNotRecognizeSelector: _cmd];
+}
+
+
+
+-(void)searchModel:(id<WCSearchModel>)sender
+didParseSearchTermEntries:(NSUInteger)foundResultsCount
+            forUrl:(NSString*)pageUrl
+{
+    [self doesNotRecognizeSelector: _cmd];
+}
+
 
 
 #pragma mark - @protocol WCSettingsState
@@ -60,25 +111,18 @@
 -(void)startButtonTapped
 {
     id<WCSettingsVMDelegate> strongDelegate = self.vcDelegate;
-
-    // TODO : update model
-    [self doesNotRecognizeSelector: _cmd];
-    
+    [self->_model startWithSettings: self->_currentState];
     [strongDelegate settingsVMDidStartSearch: self];
 }
 
 -(void)stopButtonTapped
 {
-    [self doesNotRecognizeSelector: _cmd];
-    // TODO : update model
+    [self->_model terminate];
 }
 
 -(WCSearchStatus)status
 {
-    [self doesNotRecognizeSelector: _cmd];
-    // TODO : query model
-    
-    return WCSearchNotStarted;
+    return [self->_model status];
 }
 
 #pragma mark - User Input

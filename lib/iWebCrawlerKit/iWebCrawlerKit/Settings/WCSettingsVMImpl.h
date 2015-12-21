@@ -10,12 +10,17 @@
 #import <iWebCrawlerKit/Settings/WCSettingsVM.h>
 
 
+@protocol WCSearchModel;
+@protocol WCSettingsState;
+
+
 @interface WCSettingsVMImpl : NSObject<WCSettingsVM>
 
 -(instancetype)init NS_UNAVAILABLE;
 +(instancetype)new NS_UNAVAILABLE;
 
 -(instancetype)initWithDefaultState:(id<WCSettingsState>)initialState
+                              model:(id<WCSearchModel>)model
 NS_REQUIRES_SUPER
 NS_DESIGNATED_INITIALIZER
 __attribute__((nonnull));

@@ -42,6 +42,8 @@
 		7EB8A6FB1C28753000A80BB8 /* WCSettingsStatePOD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCSettingsStatePOD.h; sourceTree = "<group>"; };
 		7EB8A6FC1C28753000A80BB8 /* WCSettingsStatePOD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCSettingsStatePOD.m; sourceTree = "<group>"; };
 		7EB8A6FF1C287A3100A80BB8 /* WCSearchStatus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCSearchStatus.h; sourceTree = "<group>"; };
+		7EB8A7001C287D3500A80BB8 /* WCSearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCSearchModel.h; sourceTree = "<group>"; };
+		7EB8A7011C287D7800A80BB8 /* WCSearchModelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCSearchModelDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				7EB8A6FF1C287A3100A80BB8 /* WCSearchStatus.h */,
+				7EB8A7001C287D3500A80BB8 /* WCSearchModel.h */,
+				7EB8A7011C287D7800A80BB8 /* WCSearchModelDelegate.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
