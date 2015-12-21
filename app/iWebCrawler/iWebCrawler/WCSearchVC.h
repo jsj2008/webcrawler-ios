@@ -10,6 +10,7 @@
 
 @interface WCSearchVC : UIViewController
 
+@property (nonatomic) id<WCSettingsVM> viewModel;
 
 @end
 

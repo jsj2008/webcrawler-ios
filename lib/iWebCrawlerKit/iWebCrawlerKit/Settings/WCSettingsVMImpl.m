@@ -128,6 +128,18 @@ didParseSearchTermEntries:(NSUInteger)foundResultsCount
     return [self->_model status];
 }
 
+-(NSString*)startButtonText
+{
+    if (WCSearchInProgress == self.status)
+    {
+        return @"Terminate";
+    }
+    else
+    {
+        return @"Start";
+    }
+}
+
 #pragma mark - User Input
 -(void)searchTermDidChange:(NSString*)newValue
 {

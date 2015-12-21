@@ -34,6 +34,11 @@
  */
 -(void)stopButtonTapped;
 
+/**
+ "Start" or "Terminage" depending on [self status];
+ */
+-(NSString*)startButtonText;
+
 -(WCSearchStatus)status;
 
 -(void)searchTermDidChange:(NSString*)newValue;
