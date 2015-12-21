@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7E9EEE4F1C285A5400E3BD0C /* iWebCrawlerKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7E9EEE4E1C285A5400E3BD0C /* iWebCrawlerKit.h */; };
 		7E9EEE5D1C285ABE00E3BD0C /* WCSettingsVMImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EEE5C1C285ABE00E3BD0C /* WCSettingsVMImpl.m */; };
+		7EB8A6F91C2872A600A80BB8 /* WCReportVMImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB8A6F81C2872A600A80BB8 /* WCReportVMImpl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +33,10 @@
 		7E9EEE5B1C285ABE00E3BD0C /* WCSettingsVMImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCSettingsVMImpl.h; sourceTree = "<group>"; };
 		7E9EEE5C1C285ABE00E3BD0C /* WCSettingsVMImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCSettingsVMImpl.m; sourceTree = "<group>"; };
 		7E9EEE681C285D0700E3BD0C /* iWebCrawlerKit.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iWebCrawlerKit.pch; sourceTree = "<group>"; };
+		7EB8A6F51C28729000A80BB8 /* WCReportVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCReportVM.h; sourceTree = "<group>"; };
+		7EB8A6F61C28729A00A80BB8 /* WCReportVMDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCReportVMDelegate.h; sourceTree = "<group>"; };
+		7EB8A6F71C2872A600A80BB8 /* WCReportVMImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCReportVMImpl.h; sourceTree = "<group>"; };
+		7EB8A6F81C2872A600A80BB8 /* WCReportVMImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCReportVMImpl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +70,7 @@
 		7E9EEE4D1C285A5400E3BD0C /* iWebCrawlerKit */ = {
 			isa = PBXGroup;
 			children = (
+				7EB8A6F41C28728200A80BB8 /* Report */,
 				7E9EEE571C285A7800E3BD0C /* Settings */,
 				7E9EEE4E1C285A5400E3BD0C /* iWebCrawlerKit.h */,
 			);
@@ -80,6 +86,17 @@
 				7E9EEE5C1C285ABE00E3BD0C /* WCSettingsVMImpl.m */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		7EB8A6F41C28728200A80BB8 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				7EB8A6F51C28729000A80BB8 /* WCReportVM.h */,
+				7EB8A6F61C28729A00A80BB8 /* WCReportVMDelegate.h */,
+				7EB8A6F71C2872A600A80BB8 /* WCReportVMImpl.h */,
+				7EB8A6F81C2872A600A80BB8 /* WCReportVMImpl.m */,
+			);
+			path = Report;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EB8A6F91C2872A600A80BB8 /* WCReportVMImpl.m in Sources */,
 				7E9EEE5D1C285ABE00E3BD0C /* WCSettingsVMImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
