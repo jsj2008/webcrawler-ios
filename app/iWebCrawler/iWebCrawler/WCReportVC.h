@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol WCReportVM;
+
+
 @interface WCReportVC : UIViewController
 
+@property (nonatomic) id<WCReportVM> viewModel;
 
 @end
 

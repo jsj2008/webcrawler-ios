@@ -8,20 +8,61 @@
 
 #import "WCReportVC.h"
 
-@interface WCReportVC ()
+@interface WCReportVC ()<WCReportVMDelegate>
 
 @end
 
 @implementation WCReportVC
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+#pragma mark - write once
+-(void)setViewModel:(id<WCReportVM>)value
+{
+    NSParameterAssert(nil == self->_viewModel);
+    
+    self->_viewModel = value;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+#pragma mark - Initialization
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+
+    NSParameterAssert(nil != self.viewModel);
+    [self->_viewModel setVcDelegate: self];
 }
+
+-(void)reloadData
+{
+    
+}
+
+#pragma mark - @protocol WCReportVMDelegate
+
+-(void)reportVMDidStartSearch:(id<WCReportVM>)sender
+{
+    // IDLE
+}
+
+-(void)reportVMDidFinishSearch:(id<WCReportVM>)sender
+{
+    // TODO : hide progress indicator
+    [self reloadData];
+}
+
+-(void)reportVMDidTerminateSearch:(id<WCReportVM>)sender
+{
+    // TODO : hide progress indicator
+    [self reloadData];
+}
+
+
+-(void)reportVMDidUpdateReportEntries:(id<WCReportVM>)sender
+{
+    // TODO : hide progress indicator
+    [self reloadData];
+}
+
 
 @end

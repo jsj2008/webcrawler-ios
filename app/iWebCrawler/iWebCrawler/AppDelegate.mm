@@ -12,6 +12,7 @@
 
 #import "WCSettingsLocalizerApple.h"
 #import "WCSearchVC.h"
+#import "WCReportVC.h"
 
 
 @interface AppDelegate ()
@@ -25,19 +26,6 @@
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     WCSearchModelImpl* model = [WCSearchModelImpl new];
-    WCSettingsLocalizerApple* localizer = [WCSettingsLocalizerApple new];
-    WCSettingsStatePOD* defaultSettings = [WCSettingsStatePOD new];
-    {
-        defaultSettings.maxThreadCount = 1;
-        defaultSettings.maxWebPageCount = 1;
-        defaultSettings.searchTerm = nil;
-        defaultSettings.rootUrlForSearch = nil;
-    }
-    
-    WCSettingsVMImpl* settingsVM =
-        [[WCSettingsVMImpl alloc] initWithDefaultState: defaultSettings
-                                                 model: model
-                                             localizer: localizer];
     
     UIStoryboard* defaultBoard = [UIStoryboard storyboardWithName: @"Main"
                                                            bundle: nil];
@@ -46,14 +34,36 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     
     WCSearchVC* searchVC = objc_member_of_cast<WCSearchVC>(tabBar.viewControllers[0]);
     {
+        WCSettingsLocalizerApple* localizer = [WCSettingsLocalizerApple new];
+        WCSettingsStatePOD* defaultSettings = [WCSettingsStatePOD new];
+        {
+            defaultSettings.maxThreadCount = 1;
+            defaultSettings.maxWebPageCount = 1;
+            defaultSettings.searchTerm = nil;
+            defaultSettings.rootUrlForSearch = nil;
+        }
+        
+        WCSettingsVMImpl* settingsVM =
+        [[WCSettingsVMImpl alloc] initWithDefaultState: defaultSettings
+                                                 model: model
+                                             localizer: localizer];
+
+        
+        
         searchVC.viewModel = settingsVM;
+    }
+    
+    
+    
+    WCReportVC* reportVC = objc_member_of_cast<WCReportVC>(tabBar.viewControllers[1]);
+    {
+        WCReportVMImpl* reportVM = [[WCReportVMImpl alloc] initWithModel: model];
+        reportVC.viewModel = reportVM;
     }
     
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = tabBar;
-    
-    // TODO : inject model to WCReportVC
     
     return YES;
 }

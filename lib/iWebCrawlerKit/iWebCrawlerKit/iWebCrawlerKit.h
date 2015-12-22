@@ -17,7 +17,14 @@
 #import <iWebCrawlerKit/Settings/WCSettingsLocalizer.h>
 #import <iWebCrawlerKit/Settings/WCSettingsVMImpl.h>
 
+#import <iWebCrawlerKit/Report/WCReportVM.h>
+#import <iWebCrawlerKit/Report/WCReportVMDelegate.h>
+#import <iWebCrawlerKit/Report/WCReportVMImpl.h>
+
 #import <iWebCrawlerKit/Model/WCSearchModelImpl.h>
+
+
+
 
 
 
