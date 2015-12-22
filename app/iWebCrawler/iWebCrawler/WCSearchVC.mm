@@ -113,6 +113,11 @@
     self.sitesValueLabel.backgroundColor = clearColor;
 }
 
+-(void)navigateToReportScreen
+{
+    [self.tabBarController setSelectedIndex: 1];
+}
+
 #pragma mark - User input
 -(IBAction)onStartButtonTapped:(id)sender
 {
@@ -185,21 +190,24 @@
 {
     [self updateProgressView];
     [self updateButtonText];
+    
+    [self navigateToReportScreen];
 }
 
 -(void)settingsVMDidFinishSearch:(id<WCSettingsVM>)sender
 {
     [self updateProgressView];
     [self updateButtonText];
-
     
-    // TODO : navigate to other tab
+    [self navigateToReportScreen];
 }
 
 -(void)settingsVMDidTerminateSearch:(id<WCSettingsVM>)sender
 {
     [self updateProgressView];
     [self updateButtonText];
+    
+    [self navigateToReportScreen];
 }
 
 @end
