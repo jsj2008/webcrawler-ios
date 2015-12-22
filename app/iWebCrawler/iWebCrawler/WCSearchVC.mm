@@ -64,6 +64,8 @@
     
     [self localizeLabels];
     [self updateValues];
+    
+    self.progressView.hidden = YES;
 }
 
 -(void)localizeLabels
@@ -116,9 +118,22 @@
     [self.searchKeywordInput resignFirstResponder];
     [self.urlInput resignFirstResponder];
     
+    if ([self.viewModel status] != WCSearchInProgress)
+    {
+        [self.viewModel startButtonTapped];
+        
+        if ([self.viewModel isProgressIndicatorVisible])
+        {
+            self.progressView.hidden = NO;
+            [self.progressView startAnimating];
+        }
+    }
+    else
+    {
+        [self.viewModel stopButtonTapped];
+    }
     
     
-    [self.viewModel startButtonTapped];
     [self updateButtonText];
 }
 
@@ -165,12 +180,18 @@
 -(void)settingsVMDidFinishSearch:(id<WCSettingsVM>)sender
 {
     [self updateButtonText];
+    
+    [self.progressView stopAnimating];
+    self.progressView.hidden = YES;
     // TODO : navigate to other tab
 }
 
 -(void)settingsVMDidTerminateSearch:(id<WCSettingsVM>)sender
 {
     [self updateButtonText];
+    
+    [self.progressView stopAnimating];
+    self.progressView.hidden = YES;
 }
 
 @end

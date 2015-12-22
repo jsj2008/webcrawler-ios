@@ -24,5 +24,6 @@
  */
 -(void)setVcDelegate:(id<WCReportVMDelegate>)vcDelegate;
 
+-(BOOL)isProgressIndicatorVisible;
 
 @end

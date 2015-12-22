@@ -25,5 +25,6 @@ NS_DESIGNATED_INITIALIZER
 __attribute__((nonnull));
 
 @property (nonatomic, weak) id<WCReportVMDelegate> vcDelegate;
+@property (nonatomic, readonly) BOOL isProgressIndicatorVisible;
 
 @end

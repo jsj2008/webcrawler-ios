@@ -29,4 +29,6 @@ __attribute__((nonnull));
 
 @property (nonatomic, weak) id<WCSettingsVMDelegate> vcDelegate;
 
+@property (nonatomic, readonly) BOOL isProgressIndicatorVisible;
+
 @end

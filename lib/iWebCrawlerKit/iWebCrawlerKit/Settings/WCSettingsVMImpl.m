@@ -19,6 +19,8 @@
     id<WCSettingsLocalizer> _localizer   ;
 }
 
+@dynamic isProgressIndicatorVisible;
+
 -(instancetype)initWithDefaultState:(id<WCSettingsState>)initialState
                               model:(id<WCSearchModel>)model
                           localizer:(id<WCSettingsLocalizer>)localizer
@@ -49,6 +51,12 @@
     
     return self;
 }
+
+-(BOOL)isProgressIndicatorVisible
+{
+    return (WCSearchInProgress == [self->_model status]);
+}
+
 
 #pragma mark - WCSearchModelDelegate
 
@@ -118,6 +126,7 @@ didParseSearchTermEntries:(NSUInteger)foundResultsCount
 -(void)startButtonTapped
 {
     id<WCSettingsVMDelegate> strongDelegate = self.vcDelegate;
+    
     [self->_model startWithSettings: self->_currentState];
     [strongDelegate settingsVMDidStartSearch: self];
 }

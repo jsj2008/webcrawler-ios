@@ -16,6 +16,8 @@
     id<WCSearchModel> _model;
 }
 
+@dynamic isProgressIndicatorVisible;
+
 
 -(instancetype)initWithModel:(id<WCSearchModel>)model
 {
@@ -29,6 +31,11 @@
     [model addVmDelegate: self];
     
     return self;
+}
+
+-(BOOL)isProgressIndicatorVisible
+{
+    return (WCSearchInProgress == [self->_model status]);
 }
 
 #pragma mark - WCSearchModelDelegate

@@ -39,6 +39,7 @@
  */
 -(NSString*)startButtonText;
 
+-(BOOL)isProgressIndicatorVisible;
 -(WCSearchStatus)status;
 
 -(void)searchTermDidChange:(NSString*)newValue;
