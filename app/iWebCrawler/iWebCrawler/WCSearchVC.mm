@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *threadsValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sitesValueLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *progressPlaceholder;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *progressView;
 
 @end
@@ -57,6 +58,8 @@
     NSParameterAssert(nil != self.viewModel);
     
     [self.viewModel setVcDelegate: self];
+    
+    [self removeStoryboardColourStubs];
     [self updateButtonText];
     
     [self localizeLabels];
@@ -91,6 +94,21 @@
                       forState: UIControlStateNormal];
 }
 
+-(void)removeStoryboardColourStubs
+{
+    UIColor* clearColor = [UIColor clearColor];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.progressPlaceholder.backgroundColor = clearColor;
+    self.searchKeywordPlaceholder.backgroundColor = clearColor;
+    self.urlPlaceholder.backgroundColor = clearColor;
+    self.threadsPlaceholder.backgroundColor = clearColor;
+    self.sitesPlaceholder.backgroundColor = clearColor;
+
+    self.threadsValueLabel.backgroundColor = clearColor;
+    self.sitesValueLabel.backgroundColor = clearColor;
+}
 
 #pragma mark - User input
 -(IBAction)onStartButtonTapped:(id)sender

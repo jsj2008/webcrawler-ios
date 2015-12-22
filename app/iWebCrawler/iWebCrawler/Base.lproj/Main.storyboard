@@ -273,6 +273,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="progressPlaceholder" destination="y9b-99-22L" id="gZQ-29-GGj"/>
                         <outlet property="progressView" destination="g7j-FV-Gmo" id="pto-ii-p22"/>
                         <outlet property="searchKeywordInput" destination="UgV-nr-t5w" id="cYg-St-hIZ"/>
                         <outlet property="searchKeywordLabel" destination="Ahf-zP-SEu" id="e3S-B9-fhq"/>
