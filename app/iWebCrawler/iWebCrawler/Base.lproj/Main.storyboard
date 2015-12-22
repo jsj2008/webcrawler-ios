@@ -101,21 +101,27 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="TM2-yg-ff3">
-                                        <rect key="frame" x="140" y="2" width="118" height="31"/>
+                                        <rect key="frame" x="140" y="2" width="109" height="31"/>
                                         <connections>
                                             <action selector="threadsSliderValueChanged:" destination="9pv-A4-QxB" eventType="valueChanged" id="3Jw-yd-ibo"/>
                                         </connections>
                                     </slider>
                                     <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="100" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wh2-fi-TvW">
-                                        <rect key="frame" x="268" y="8" width="42" height="21"/>
+                                        <rect key="frame" x="257" y="8" width="53" height="21"/>
                                         <color key="backgroundColor" red="1" green="0.7963506711409396" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="53" id="Rob-l9-znD"/>
                                             <constraint firstAttribute="height" constant="21" id="gmQ-oW-H0V"/>
                                             <constraint firstAttribute="width" constant="42" id="qQb-0G-kB2"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="qQb-0G-kB2"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -146,21 +152,27 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="OUg-M4-U4v">
-                                        <rect key="frame" x="140" y="4" width="118" height="31"/>
+                                        <rect key="frame" x="140" y="4" width="111" height="31"/>
                                         <connections>
                                             <action selector="sitesSliderValueChanged:" destination="9pv-A4-QxB" eventType="valueChanged" id="JVI-Nd-evd"/>
                                         </connections>
                                     </slider>
-                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2k-7K-5zp">
-                                        <rect key="frame" x="268" y="8" width="42" height="21"/>
+                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1,000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2k-7K-5zp">
+                                        <rect key="frame" x="257" y="8" width="53" height="21"/>
                                         <color key="backgroundColor" red="1" green="0.79635067110000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="K1V-GJ-cEt"/>
                                             <constraint firstAttribute="width" constant="42" id="Umq-kr-qqc"/>
+                                            <constraint firstAttribute="width" constant="53" id="eU6-I7-NEe"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Umq-kr-qqc"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="0.43301698825503354" alpha="1" colorSpace="calibratedRGB"/>
