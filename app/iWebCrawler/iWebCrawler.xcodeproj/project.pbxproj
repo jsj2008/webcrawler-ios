@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7E9EEE2A1C2859E800E3BD0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EEE291C2859E800E3BD0C /* main.m */; };
-		7E9EEE2D1C2859E800E3BD0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EEE2C1C2859E800E3BD0C /* AppDelegate.m */; };
-		7E9EEE301C2859E800E3BD0C /* WCSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EEE2F1C2859E800E3BD0C /* WCSearchVC.m */; };
+		7E9EEE2D1C2859E800E3BD0C /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EEE2C1C2859E800E3BD0C /* AppDelegate.mm */; };
+		7E9EEE301C2859E800E3BD0C /* WCSearchVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EEE2F1C2859E800E3BD0C /* WCSearchVC.mm */; };
 		7E9EEE331C2859E800E3BD0C /* WCReportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EEE321C2859E800E3BD0C /* WCReportVC.m */; };
 		7E9EEE361C2859E800E3BD0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E9EEE341C2859E800E3BD0C /* Main.storyboard */; };
 		7E9EEE381C2859E800E3BD0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E9EEE371C2859E800E3BD0C /* Assets.xcassets */; };
@@ -41,9 +41,9 @@
 		7E9EEE251C2859E800E3BD0C /* iWebCrawler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWebCrawler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E9EEE291C2859E800E3BD0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7E9EEE2B1C2859E800E3BD0C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		7E9EEE2C1C2859E800E3BD0C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7E9EEE2C1C2859E800E3BD0C /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		7E9EEE2E1C2859E800E3BD0C /* WCSearchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCSearchVC.h; sourceTree = "<group>"; };
-		7E9EEE2F1C2859E800E3BD0C /* WCSearchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCSearchVC.m; sourceTree = "<group>"; };
+		7E9EEE2F1C2859E800E3BD0C /* WCSearchVC.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = WCSearchVC.mm; sourceTree = "<group>"; };
 		7E9EEE311C2859E800E3BD0C /* WCReportVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCReportVC.h; sourceTree = "<group>"; };
 		7E9EEE321C2859E800E3BD0C /* WCReportVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCReportVC.m; sourceTree = "<group>"; };
 		7E9EEE351C2859E800E3BD0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -97,9 +97,9 @@
 			isa = PBXGroup;
 			children = (
 				7E9EEE2B1C2859E800E3BD0C /* AppDelegate.h */,
-				7E9EEE2C1C2859E800E3BD0C /* AppDelegate.m */,
+				7E9EEE2C1C2859E800E3BD0C /* AppDelegate.mm */,
 				7E9EEE2E1C2859E800E3BD0C /* WCSearchVC.h */,
-				7E9EEE2F1C2859E800E3BD0C /* WCSearchVC.m */,
+				7E9EEE2F1C2859E800E3BD0C /* WCSearchVC.mm */,
 				7E9EEE311C2859E800E3BD0C /* WCReportVC.h */,
 				7E9EEE321C2859E800E3BD0C /* WCReportVC.m */,
 				7E9EEE341C2859E800E3BD0C /* Main.storyboard */,
@@ -219,8 +219,8 @@
 			files = (
 				7E9EEE331C2859E800E3BD0C /* WCReportVC.m in Sources */,
 				7EB8A70B1C28CF1D00A80BB8 /* WCSettingsLocalizerApple.m in Sources */,
-				7E9EEE2D1C2859E800E3BD0C /* AppDelegate.m in Sources */,
-				7E9EEE301C2859E800E3BD0C /* WCSearchVC.m in Sources */,
+				7E9EEE2D1C2859E800E3BD0C /* AppDelegate.mm in Sources */,
+				7E9EEE301C2859E800E3BD0C /* WCSearchVC.mm in Sources */,
 				7E9EEE2A1C2859E800E3BD0C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
