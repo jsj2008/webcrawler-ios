@@ -11,6 +11,7 @@
 
 #ifdef __OBJC__
     #ifdef __cplusplus
+        #import <ObjcCastFunctions.hpp>
     #endif // Obj-C++
 
     #import <iWebCrawlerKit/iWebCrawlerKit.h>

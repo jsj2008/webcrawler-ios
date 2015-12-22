@@ -42,9 +42,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     UIStoryboard* defaultBoard = [UIStoryboard storyboardWithName: @"Main"
                                                            bundle: nil];
     
-    UITabBarController* tabBar = (UITabBarController*)[defaultBoard instantiateInitialViewController];
+    UITabBarController* tabBar = objc_member_of_cast<UITabBarController>([defaultBoard instantiateInitialViewController]);
     
-    WCSearchVC* searchVC = (WCSearchVC*)tabBar.viewControllers[0];
+    WCSearchVC* searchVC = objc_member_of_cast<WCSearchVC>(tabBar.viewControllers[0]);
     {
         searchVC.viewModel = settingsVM;
     }

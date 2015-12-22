@@ -104,7 +104,7 @@
 
 -(IBAction)sitesSliderValueChanged:(id)sender
 {
-    NSUInteger castedValue = (NSUInteger)self.sitesSlider.value;
+    NSUInteger castedValue = static_cast<NSUInteger>(self.sitesSlider.value);
     [self.viewModel maxWebPageCountDidChange: castedValue];
 
     // TODO : maybe move to VM
@@ -114,7 +114,7 @@
 
 -(IBAction)threadsSliderValueChanged:(id)sender
 {
-    NSUInteger castedValue = (NSUInteger)self.threadsSlider.value;
+    NSUInteger castedValue = static_cast<NSUInteger>(self.threadsSlider.value);
     [self.viewModel maxThreadCountDidChange: castedValue];
     
     // TODO : maybe move to VM
