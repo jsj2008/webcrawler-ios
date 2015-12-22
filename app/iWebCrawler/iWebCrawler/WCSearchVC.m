@@ -42,8 +42,34 @@
 {
     [super viewDidLoad];
     
+    NSParameterAssert(nil != self.viewModel);
+    
     [self.viewModel setVcDelegate: self];
     [self updateButtonText];
+    
+    [self localizeLabels];
+    [self updateValues];
+}
+
+-(void)localizeLabels
+{
+    self.searchKeywordLabel.text = NSLocalizedString(@"LABEL_SEARCH_TERM", nil);
+    self.urlLabel          .text = NSLocalizedString(@"LABEL_URL"        , nil);
+    self.threadsLabel      .text = NSLocalizedString(@"LABEL_THREADS"    , nil);
+    self.sitesLabel        .text = NSLocalizedString(@"LABEL_SITES"      , nil);
+}
+
+-(void)updateValues
+{
+    self.searchKeywordInput.text = [self.viewModel searchTerm];
+    self.urlInput.text = [self.viewModel rootUrlForSearch];
+    
+    self.threadsSlider.value = [self.viewModel maxThreadCount];
+    self.sitesSlider.value = [self.viewModel maxWebPageCount];
+    
+    NSLocale* locale = [NSLocale currentLocale];
+    self.sitesValueLabel.text = [@([self.viewModel maxWebPageCount]) descriptionWithLocale: locale];
+    self.threadsValueLabel.text = [@([self.viewModel maxThreadCount]) descriptionWithLocale: locale];
 }
 
 -(void)updateButtonText
