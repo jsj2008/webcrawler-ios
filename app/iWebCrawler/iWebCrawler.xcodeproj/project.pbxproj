@@ -16,6 +16,8 @@
 		7E9EEE3B1C2859E800E3BD0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E9EEE391C2859E800E3BD0C /* LaunchScreen.storyboard */; };
 		7E9EEE661C285C4B00E3BD0C /* libiWebCrawlerKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E9EEE631C285C3200E3BD0C /* libiWebCrawlerKit.a */; };
 		7EB8A7071C28BAAE00A80BB8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EB8A7061C28BAAE00A80BB8 /* libc++.tbd */; };
+		7EB8A70B1C28CF1D00A80BB8 /* WCSettingsLocalizerApple.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB8A70A1C28CF1D00A80BB8 /* WCSettingsLocalizerApple.m */; };
+		7EB8A70D1C28CF2F00A80BB8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EB8A70C1C28CF2F00A80BB8 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,10 @@
 		7E9EEE5E1C285C3100E3BD0C /* iWebCrawlerKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iWebCrawlerKit.xcodeproj; path = ../../lib/iWebCrawlerKit/iWebCrawlerKit.xcodeproj; sourceTree = "<group>"; };
 		7E9EEE671C285CC900E3BD0C /* iWebCrawler.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iWebCrawler.pch; sourceTree = "<group>"; };
 		7EB8A7061C28BAAE00A80BB8 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		7EB8A7091C28CF1D00A80BB8 /* WCSettingsLocalizerApple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCSettingsLocalizerApple.h; sourceTree = "<group>"; };
+		7EB8A70A1C28CF1D00A80BB8 /* WCSettingsLocalizerApple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCSettingsLocalizerApple.m; sourceTree = "<group>"; };
+		7EB8A70C1C28CF2F00A80BB8 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = iWebCrawler/Localizable.strings; sourceTree = "<group>"; };
+		7EB8A70E1C28D2FB00A80BB8 /* ObjcCastFunctions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ObjcCastFunctions.hpp; path = ../../lib/ObjcCastFunctions.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +76,9 @@
 			isa = PBXGroup;
 			children = (
 				7EB8A7061C28BAAE00A80BB8 /* libc++.tbd */,
+				7EB8A70C1C28CF2F00A80BB8 /* Localizable.strings */,
 				7E9EEE671C285CC900E3BD0C /* iWebCrawler.pch */,
+				7EB8A70E1C28D2FB00A80BB8 /* ObjcCastFunctions.hpp */,
 				7E9EEE5E1C285C3100E3BD0C /* iWebCrawlerKit.xcodeproj */,
 				7E9EEE271C2859E800E3BD0C /* iWebCrawler */,
 				7E9EEE261C2859E800E3BD0C /* Products */,
@@ -99,6 +107,8 @@
 				7E9EEE391C2859E800E3BD0C /* LaunchScreen.storyboard */,
 				7E9EEE3C1C2859E800E3BD0C /* Info.plist */,
 				7E9EEE281C2859E800E3BD0C /* Supporting Files */,
+				7EB8A7091C28CF1D00A80BB8 /* WCSettingsLocalizerApple.h */,
+				7EB8A70A1C28CF1D00A80BB8 /* WCSettingsLocalizerApple.m */,
 			);
 			path = iWebCrawler;
 			sourceTree = "<group>";
@@ -194,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E9EEE3B1C2859E800E3BD0C /* LaunchScreen.storyboard in Resources */,
+				7EB8A70D1C28CF2F00A80BB8 /* Localizable.strings in Resources */,
 				7E9EEE381C2859E800E3BD0C /* Assets.xcassets in Resources */,
 				7E9EEE361C2859E800E3BD0C /* Main.storyboard in Resources */,
 			);
@@ -207,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E9EEE331C2859E800E3BD0C /* WCReportVC.m in Sources */,
+				7EB8A70B1C28CF1D00A80BB8 /* WCSettingsLocalizerApple.m in Sources */,
 				7E9EEE2D1C2859E800E3BD0C /* AppDelegate.m in Sources */,
 				7E9EEE301C2859E800E3BD0C /* WCSearchVC.m in Sources */,
 				7E9EEE2A1C2859E800E3BD0C /* main.m in Sources */,
