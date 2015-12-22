@@ -65,7 +65,8 @@
     [self localizeLabels];
     [self updateValues];
     
-    self.progressView.hidden = YES;
+    [self updateProgressView];
+    [self updateButtonText];
 }
 
 -(void)localizeLabels
@@ -121,20 +122,28 @@
     if ([self.viewModel status] != WCSearchInProgress)
     {
         [self.viewModel startButtonTapped];
-        
-        if ([self.viewModel isProgressIndicatorVisible])
-        {
-            self.progressView.hidden = NO;
-            [self.progressView startAnimating];
-        }
     }
     else
     {
         [self.viewModel stopButtonTapped];
     }
     
-    
+    [self updateProgressView];
     [self updateButtonText];
+}
+
+-(void)updateProgressView
+{
+    if ([self.viewModel isProgressIndicatorVisible])
+    {
+        self.progressView.hidden = NO;
+        [self.progressView startAnimating];
+    }
+    else
+    {
+        [self.progressView stopAnimating];
+        self.progressView.hidden = YES;
+    }
 }
 
 -(IBAction)onSearchKeywordTextEntered:(id)sender
@@ -174,24 +183,23 @@
 
 -(void)settingsVMDidStartSearch:(id<WCSettingsVM>)sender
 {
-    // TODO : navigate to other tab
+    [self updateProgressView];
+    [self updateButtonText];
 }
 
 -(void)settingsVMDidFinishSearch:(id<WCSettingsVM>)sender
 {
+    [self updateProgressView];
     [self updateButtonText];
+
     
-    [self.progressView stopAnimating];
-    self.progressView.hidden = YES;
     // TODO : navigate to other tab
 }
 
 -(void)settingsVMDidTerminateSearch:(id<WCSettingsVM>)sender
 {
+    [self updateProgressView];
     [self updateButtonText];
-    
-    [self.progressView stopAnimating];
-    self.progressView.hidden = YES;
 }
 
 @end
