@@ -48,6 +48,7 @@
 		7EB8A7021C28B67C00A80BB8 /* WCReportState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCReportState.h; sourceTree = "<group>"; };
 		7EB8A7031C28B92F00A80BB8 /* WCSearchModelImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCSearchModelImpl.h; sourceTree = "<group>"; };
 		7EB8A7041C28B92F00A80BB8 /* WCSearchModelImpl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WCSearchModelImpl.mm; sourceTree = "<group>"; };
+		7EB8A7081C28CB6F00A80BB8 /* WCSettingsLocalizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCSettingsLocalizer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +100,7 @@
 				7E9EEE5C1C285ABE00E3BD0C /* WCSettingsVMImpl.m */,
 				7EB8A6FB1C28753000A80BB8 /* WCSettingsStatePOD.h */,
 				7EB8A6FC1C28753000A80BB8 /* WCSettingsStatePOD.m */,
+				7EB8A7081C28CB6F00A80BB8 /* WCSettingsLocalizer.h */,
 			);
 			path = Settings;
 			sourceTree = "<group>";

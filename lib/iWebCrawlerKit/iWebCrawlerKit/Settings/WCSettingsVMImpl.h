@@ -12,6 +12,7 @@
 
 @protocol WCSearchModel;
 @protocol WCSettingsState;
+@protocol WCSettingsLocalizer;
 
 
 @interface WCSettingsVMImpl : NSObject<WCSettingsVM>
@@ -21,6 +22,7 @@
 
 -(instancetype)initWithDefaultState:(id<WCSettingsState>)initialState
                               model:(id<WCSearchModel>)model
+                          localizer:(id<WCSettingsLocalizer>)localizer
 NS_REQUIRES_SUPER
 NS_DESIGNATED_INITIALIZER
 __attribute__((nonnull));

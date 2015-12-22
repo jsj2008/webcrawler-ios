@@ -13,7 +13,7 @@
         #ifdef __cplusplus
         #endif // Obj-C++
 
-
+        #import "WCSettingsLocalizer.h"
         #import "WCSettingsStatePOD.h"
         #import "WCSettingsVMDelegate.h"
         #import "WCSearchModel.h"

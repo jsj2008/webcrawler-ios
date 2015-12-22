@@ -10,7 +10,14 @@
 #import <iWebCrawlerKit/Model/WCSearchStatus.h>
 
 #import <iWebCrawlerKit/Settings/WCSettingsState.h>
+#import <iWebCrawlerKit/Settings/WCSettingsStatePOD.h>
+
 #import <iWebCrawlerKit/Settings/WCSettingsVM.h>
 #import <iWebCrawlerKit/Settings/WCSettingsVMDelegate.h>
+#import <iWebCrawlerKit/Settings/WCSettingsLocalizer.h>
+#import <iWebCrawlerKit/Settings/WCSettingsVMImpl.h>
+
+#import <iWebCrawlerKit/Model/WCSearchModelImpl.h>
+
 
 

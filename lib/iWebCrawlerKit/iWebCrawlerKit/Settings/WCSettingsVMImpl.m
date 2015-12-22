@@ -13,17 +13,19 @@
 
 @implementation WCSettingsVMImpl
 {
-    id<WCSettingsState> _initialState;
-    WCSettingsStatePOD* _currentState;
-    
-    id<WCSearchModel> _model;
+    id<WCSettingsState>     _initialState;
+    WCSettingsStatePOD*     _currentState;
+    id<WCSearchModel>       _model       ;
+    id<WCSettingsLocalizer> _localizer   ;
 }
 
 -(instancetype)initWithDefaultState:(id<WCSettingsState>)initialState
                               model:(id<WCSearchModel>)model
+                          localizer:(id<WCSettingsLocalizer>)localizer
 {
     NSParameterAssert(nil != initialState);
     NSParameterAssert(nil != model       );
+    NSParameterAssert(nil != localizer   );
     
     self = [super init];
     if (nil == self)
@@ -42,6 +44,8 @@
     
     self->_model = model;
     [self->_model addVmDelegate: self];
+    
+    self->_localizer = localizer;
     
     return self;
 }
@@ -132,11 +136,11 @@ didParseSearchTermEntries:(NSUInteger)foundResultsCount
 {
     if (WCSearchInProgress == self.status)
     {
-        return @"Terminate";
+        return [self->_localizer titleForStopButton];
     }
     else
     {
-        return @"Start";
+        return [self->_localizer titleForStartButton];
     }
 }
 
