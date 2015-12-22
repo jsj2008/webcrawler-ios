@@ -33,11 +33,23 @@
 @property (weak, nonatomic) IBOutlet UILabel *threadsValueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sitesValueLabel;
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *progressView;
+
 @end
 
 
 @implementation WCSearchVC
 
+#pragma mark - write once
+-(void)setViewModel:(id<WCSettingsVM>)value
+{
+    NSParameterAssert(nil == self->_viewModel);
+    
+    self->_viewModel = value;
+}
+
+
+#pragma mark - Initialization
 -(void)viewDidLoad
 {
     [super viewDidLoad];
@@ -79,6 +91,8 @@
                       forState: UIControlStateNormal];
 }
 
+
+#pragma mark - User input
 -(IBAction)onStartButtonTapped:(id)sender
 {
     [self.searchKeywordInput resignFirstResponder];
