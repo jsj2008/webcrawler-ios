@@ -26,4 +26,6 @@ typedef void (^WCLoaderCompletionBlock)(
 -(void)loadPageAsync:(NSString*)pageUrl
           completion:(WCLoaderCompletionBlock)callback;
 
+-(void)terminateAllTasks;
+
 @end

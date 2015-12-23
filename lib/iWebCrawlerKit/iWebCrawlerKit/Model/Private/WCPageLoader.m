@@ -119,6 +119,12 @@
     
     @synchronized (self)
     {
+        if (self->_isTerminated)
+        {
+            return;
+        }
+        
+        
         self->_isTerminated = YES;
         callbacksCopy = [NSDictionary dictionaryWithDictionary: self->_callbackForUrlMap];
     }
