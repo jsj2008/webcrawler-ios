@@ -36,6 +36,9 @@
 -(instancetype)initWithCacheDirectory:(NSString*)cacheDir
             maxParallelDownloadsCount:(NSUInteger)maxParallelDownloadsCount
 {
+    NSParameterAssert(nil != cacheDir);
+    NSParameterAssert(0 != maxParallelDownloadsCount);
+    
     self = [super init];
     if (nil == self)
     {

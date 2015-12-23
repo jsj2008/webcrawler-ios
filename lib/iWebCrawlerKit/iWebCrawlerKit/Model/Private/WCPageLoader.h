@@ -21,7 +21,10 @@ typedef void (^WCLoaderCompletionBlock)(
 +(instancetype)new  NS_UNAVAILABLE;
 
 -(instancetype)initWithCacheDirectory:(NSString*)cacheDir
-            maxParallelDownloadsCount:(NSUInteger)maxParallelDownloadsCount;
+            maxParallelDownloadsCount:(NSUInteger)maxParallelDownloadsCount
+NS_DESIGNATED_INITIALIZER
+NS_REQUIRES_SUPER
+__attribute__((nonnull));
 
 -(void)loadPageAsync:(NSString*)pageUrl
           completion:(WCLoaderCompletionBlock)callback;
