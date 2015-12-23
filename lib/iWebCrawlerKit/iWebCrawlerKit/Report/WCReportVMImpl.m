@@ -78,26 +78,20 @@ didParseSearchTermEntries:(NSUInteger)foundResultsCount
 #pragma  mark - WCReportState
 -(NSUInteger)numberOfEntriesInReport
 {
-    NSAssert(NO, @"not implemented");
-    [self doesNotRecognizeSelector: _cmd];
-    
-    return 0;
+    id<WCReportState> report = [self->_model report];
+    return [report numberOfEntriesInReport];
 }
 
 -(NSString*)urlOfEntryAtIndexPath:(NSIndexPath*)indexPath
 {
-    NSAssert(NO, @"not implemented");
-    [self doesNotRecognizeSelector: _cmd];
-    
-    return nil;
+    id<WCReportState> report = [self->_model report];
+    return [report urlOfEntryAtIndexPath: indexPath];
 }
 
 -(NSUInteger)numberOfOccurencesAtIndexPath:(NSIndexPath*)indexPath
 {
-    NSAssert(NO, @"not implemented");
-    [self doesNotRecognizeSelector: _cmd];
-    
-    return 0;
+    id<WCReportState> report = [self->_model report];
+    return [report numberOfOccurencesAtIndexPath: indexPath];
 }
 
 @end

@@ -11,6 +11,7 @@
 
 @protocol WCSettingsState;
 @protocol WCSearchModelDelegate;
+@protocol WCReportState;
 
 
 @protocol WCSearchModel <NSObject>
@@ -28,5 +29,7 @@
 -(void)terminate;
 
 -(WCSearchStatus)status;
+
+-(id<WCReportState>)report;
 
 @end
