@@ -142,7 +142,7 @@ typedef std::vector< __weak id<WCSearchModelDelegate> > WCSearchModelDelegate_vt
     __weak WCSearchModelImpl* weakSelf = self;
     
     WCPageParserCompletionBlock onPageParsed =
-    ^void(id<WCPageStats> maybeResult, NSError *maybeError)
+    ^void(NSString* pageUrl, id<WCPageStats> maybeResult, NSError *maybeError)
     {
         WCSearchModelImpl* strongSelf = weakSelf;
         
