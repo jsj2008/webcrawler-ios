@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E1B77F91C2A19AD00977EBD /* libAmberFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1B77F61C2A190E00977EBD /* libAmberFoundation.a */; };
 		7E9EEE2A1C2859E800E3BD0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EEE291C2859E800E3BD0C /* main.m */; };
 		7E9EEE2D1C2859E800E3BD0C /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EEE2C1C2859E800E3BD0C /* AppDelegate.mm */; };
 		7E9EEE301C2859E800E3BD0C /* WCSearchVC.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EEE2F1C2859E800E3BD0C /* WCSearchVC.mm */; };
@@ -21,6 +22,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7E1B77F51C2A190E00977EBD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E1B77F01C2A190E00977EBD /* AmberFoundation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53A0190614E27A720007DC05;
+			remoteInfo = AmberFoundation;
+		};
+		7E1B77F71C2A190E00977EBD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E1B77F01C2A190E00977EBD /* AmberFoundation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53A0193214E27BB40007DC05;
+			remoteInfo = "AmberFoundatio-clang";
+		};
+		7E1B77FA1C2A19B200977EBD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E1B77F01C2A190E00977EBD /* AmberFoundation.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 53A0190514E27A720007DC05;
+			remoteInfo = AmberFoundation;
+		};
 		7E9EEE621C285C3200E3BD0C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7E9EEE5E1C285C3100E3BD0C /* iWebCrawlerKit.xcodeproj */;
@@ -38,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E1B77F01C2A190E00977EBD /* AmberFoundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AmberFoundation.xcodeproj; path = "../../lib/AmberFramework-lite/AmberFoundation/AmberFoundation.xcodeproj"; sourceTree = "<group>"; };
 		7E9EEE251C2859E800E3BD0C /* iWebCrawler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iWebCrawler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E9EEE291C2859E800E3BD0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7E9EEE2B1C2859E800E3BD0C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -64,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E1B77F91C2A19AD00977EBD /* libAmberFoundation.a in Frameworks */,
 				7EB8A7071C28BAAE00A80BB8 /* libc++.tbd in Frameworks */,
 				7E9EEE661C285C4B00E3BD0C /* libiWebCrawlerKit.a in Frameworks */,
 			);
@@ -72,6 +96,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E1B77F11C2A190E00977EBD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7E1B77F61C2A190E00977EBD /* libAmberFoundation.a */,
+				7E1B77F81C2A190E00977EBD /* libAmberFoundatio-clang.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		7E9EEE1C1C2859E800E3BD0C = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +112,7 @@
 				7EB8A70C1C28CF2F00A80BB8 /* Localizable.strings */,
 				7E9EEE671C285CC900E3BD0C /* iWebCrawler.pch */,
 				7EB8A70E1C28D2FB00A80BB8 /* ObjcCastFunctions.hpp */,
+				7E1B77F01C2A190E00977EBD /* AmberFoundation.xcodeproj */,
 				7E9EEE5E1C285C3100E3BD0C /* iWebCrawlerKit.xcodeproj */,
 				7E9EEE271C2859E800E3BD0C /* iWebCrawler */,
 				7E9EEE261C2859E800E3BD0C /* Products */,
@@ -143,6 +177,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				7E1B77FB1C2A19B200977EBD /* PBXTargetDependency */,
 				7E9EEE651C285C4500E3BD0C /* PBXTargetDependency */,
 			);
 			name = iWebCrawler;
@@ -177,6 +212,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 7E1B77F11C2A190E00977EBD /* Products */;
+					ProjectRef = 7E1B77F01C2A190E00977EBD /* AmberFoundation.xcodeproj */;
+				},
+				{
 					ProductGroup = 7E9EEE5F1C285C3100E3BD0C /* Products */;
 					ProjectRef = 7E9EEE5E1C285C3100E3BD0C /* iWebCrawlerKit.xcodeproj */;
 				},
@@ -189,6 +228,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		7E1B77F61C2A190E00977EBD /* libAmberFoundation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAmberFoundation.a;
+			remoteRef = 7E1B77F51C2A190E00977EBD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7E1B77F81C2A190E00977EBD /* libAmberFoundatio-clang.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libAmberFoundatio-clang.a";
+			remoteRef = 7E1B77F71C2A190E00977EBD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		7E9EEE631C285C3200E3BD0C /* libiWebCrawlerKit.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -228,6 +281,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7E1B77FB1C2A19B200977EBD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = AmberFoundation;
+			targetProxy = 7E1B77FA1C2A19B200977EBD /* PBXContainerItemProxy */;
+		};
 		7E9EEE651C285C4500E3BD0C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = iWebCrawlerKit;
@@ -314,6 +372,7 @@
 				HEADER_SEARCH_PATHS = (
 					../../lib/iWebCrawlerKit,
 					../../lib,
+					"../../lib/AmberFramework-lite",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -376,6 +435,7 @@
 				HEADER_SEARCH_PATHS = (
 					../../lib/iWebCrawlerKit,
 					../../lib,
+					"../../lib/AmberFramework-lite",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

@@ -21,7 +21,7 @@
         #import "WCReportVMDelegate.h"
         #import <iWebCrawlerKit/Model/WCSearchStatus.h>
 
-
+        #import <AmberFoundation/AmberFoundation.h>
         #import <Foundation/Foundation.h>
     #endif //__OBJC__
 
