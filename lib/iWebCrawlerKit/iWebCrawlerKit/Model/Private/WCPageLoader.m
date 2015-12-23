@@ -233,7 +233,12 @@ didFinishDownloadingToURL:(NSURL *)location
     
     BOOL success = [fileManager moveItemAtURL: downloadURL
                                         toURL: destinationURL
-                                        error: error ];
+                                        error: error];
+    
+    // https://developer.apple.com/library/ios/qa/qa1719/_index.html
+    [destinationURL setResourceValue: @YES
+                              forKey: NSURLIsExcludedFromBackupKey
+                               error: error];
     
     if (success)
     {
