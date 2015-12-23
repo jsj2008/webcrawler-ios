@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E1B77EF1C2A087500977EBD /* WCPageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E1B77EE1C2A087500977EBD /* WCPageLoader.m */; };
 		7E9EEE4F1C285A5400E3BD0C /* iWebCrawlerKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7E9EEE4E1C285A5400E3BD0C /* iWebCrawlerKit.h */; };
 		7E9EEE5D1C285ABE00E3BD0C /* WCSettingsVMImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E9EEE5C1C285ABE00E3BD0C /* WCSettingsVMImpl.m */; };
 		7EB8A6F91C2872A600A80BB8 /* WCReportVMImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EB8A6F81C2872A600A80BB8 /* WCReportVMImpl.m */; };
@@ -28,6 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7E1B77ED1C2A087500977EBD /* WCPageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCPageLoader.h; sourceTree = "<group>"; };
+		7E1B77EE1C2A087500977EBD /* WCPageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCPageLoader.m; sourceTree = "<group>"; };
 		7E9EEE4B1C285A5400E3BD0C /* libiWebCrawlerKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiWebCrawlerKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E9EEE4E1C285A5400E3BD0C /* iWebCrawlerKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iWebCrawlerKit.h; sourceTree = "<group>"; };
 		7E9EEE581C285A9700E3BD0C /* WCSettingsVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCSettingsVM.h; sourceTree = "<group>"; };
@@ -62,6 +65,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E1B77EB1C2A01A300977EBD /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				7E1B77ED1C2A087500977EBD /* WCPageLoader.h */,
+				7E1B77EE1C2A087500977EBD /* WCPageLoader.m */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
 		7E9EEE421C285A5400E3BD0C = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +132,7 @@
 		7EB8A6FE1C2879F600A80BB8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7E1B77EB1C2A01A300977EBD /* Private */,
 				7EB8A6FF1C287A3100A80BB8 /* WCSearchStatus.h */,
 				7EB8A7001C287D3500A80BB8 /* WCSearchModel.h */,
 				7EB8A7011C287D7800A80BB8 /* WCSearchModelDelegate.h */,
@@ -187,6 +200,7 @@
 			files = (
 				7EB8A6F91C2872A600A80BB8 /* WCReportVMImpl.m in Sources */,
 				7EB8A7051C28B92F00A80BB8 /* WCSearchModelImpl.mm in Sources */,
+				7E1B77EF1C2A087500977EBD /* WCPageLoader.m in Sources */,
 				7E9EEE5D1C285ABE00E3BD0C /* WCSettingsVMImpl.m in Sources */,
 				7EB8A6FD1C28753100A80BB8 /* WCSettingsStatePOD.m in Sources */,
 			);
@@ -251,7 +265,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = .;
+				HEADER_SEARCH_PATHS = (
+					.,
+					"../AmberFramework-lite",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -309,7 +326,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = .;
+				HEADER_SEARCH_PATHS = (
+					.,
+					"../AmberFramework-lite",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
