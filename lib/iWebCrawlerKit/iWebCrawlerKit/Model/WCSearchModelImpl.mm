@@ -9,6 +9,8 @@
 #import "WCSearchModelImpl.h"
 
 #import "WCPageLoader.h"
+#import "WCSearchThreadPool.h"
+#import "WCMutableArrayReport.h"
 
 
 typedef std::vector< __weak id<WCSearchModelDelegate> > WCSearchModelDelegate_vt;
@@ -19,8 +21,16 @@ typedef std::vector< __weak id<WCSearchModelDelegate> > WCSearchModelDelegate_vt
     NSString* _cacheDir;
     
     WCPageLoader* _loader;
-    id _pendingUrlsList;
-    id _loadedUrlsList;
+//    id _pendingUrlsList;
+//    id _loadedUrlsList;
+//    id _processedUrlsList;
+    
+    WCSearchThreadPool* _parserThreadPool;
+    NSMutableSet* _visitedPages;
+    
+    WCMutableArrayReport* _report;
+    
+    id<WCSettingsState> _settings;
 }
 
 #pragma mark - memory management
@@ -34,16 +44,13 @@ typedef std::vector< __weak id<WCSearchModelDelegate> > WCSearchModelDelegate_vt
     self->_status = WCSearchTerminated;
     
     [self->_loader terminateAllTasks];
-    //    // TODO : stop threads
-    //    NSAssert(NO, @"not implemented");
-    //    [self doesNotRecognizeSelector: _cmd];
     
     [self notifyTerminate];
     
     [self clearDelegateList];
     self->_loader = nil;
-    self->_pendingUrlsList = nil;
-    self->_loadedUrlsList = nil;
+//    self->_pendingUrlsList = nil;
+//    self->_loadedUrlsList = nil;
 }
 
 #pragma mark - setup
@@ -56,11 +63,17 @@ typedef std::vector< __weak id<WCSearchModelDelegate> > WCSearchModelDelegate_vt
     }
     
     self->_cacheDir = cacheDir;
+    self->_visitedPages = [NSMutableSet new];
     
     return self;
 }
 
 #pragma mark - delegate list
+-(id<WCReportState>)report
+{
+    return self->_report;
+}
+
 -(void)addVmDelegate:(id<WCSearchModelDelegate>)delegate
 {
     self->_delegateList.push_back(delegate);
@@ -76,13 +89,31 @@ typedef std::vector< __weak id<WCSearchModelDelegate> > WCSearchModelDelegate_vt
 {
     NSParameterAssert(WCSearchInProgress != self.status);
     
-    __weak WCSearchModelImpl* weakSelf = self;
-    
+    self->_settings = settings;
     self->_status = WCSearchInProgress;
+    
+    
+    NSUInteger threadsCount = [settings maxThreadCount];
+    NSString* rootPage = [settings rootUrlForSearch];
+    
+    self->_report = [WCMutableArrayReport new];
+    
+    self->_parserThreadPool =
+    [[WCSearchThreadPool alloc] initWithSearchKeyword: [settings searchTerm]
+                                      maxThreadsCount: threadsCount];
     
     self->_loader =
     [[WCPageLoader alloc] initWithCacheDirectory: self->_cacheDir
-                       maxParallelDownloadsCount: [settings maxThreadCount]];
+                       maxParallelDownloadsCount: threadsCount];
+    
+    [self loadPageAsync: rootPage];
+}
+
+-(void)loadPageAsync:(NSString*)webPage
+{
+    __weak WCSearchModelImpl* weakSelf = self;
+    
+    [self->_visitedPages addObject: webPage];
     
     WCLoaderCompletionBlock onRootPageLoaded =
     ^void(NSString *pageUrl, NSString *localPathToPageContents, NSError *error)
@@ -95,19 +126,58 @@ typedef std::vector< __weak id<WCSearchModelDelegate> > WCSearchModelDelegate_vt
         }
         else
         {
-            [strongSelf processLoadedPage: pageUrl
-                                  content: localPathToPageContents];
+            [strongSelf parseLoadedPageAsync: pageUrl
+                                     content: localPathToPageContents];
         }
     };
     
-    [self->_loader loadPageAsync: [settings rootUrlForSearch]
+    [self->_loader loadPageAsync: webPage
                       completion: onRootPageLoaded];
+    
 }
 
--(void)processLoadedPage:(NSString*)webPageUrl
-                 content:(NSString*)pathToPageContentsFile
+-(void)parseLoadedPageAsync:(NSString*)webPageUrl
+                    content:(NSString*)pathToPageContentsFile
 {
-    NSAssert(NO, @"not implemented");
+    __weak WCSearchModelImpl* weakSelf = self;
+    
+    WCPageParserCompletionBlock onPageParsed =
+    ^void(id<WCPageStats> maybeResult, NSError *maybeError)
+    {
+        WCSearchModelImpl* strongSelf = weakSelf;
+        
+        if (nil == maybeResult)
+        {
+            // TODO : maybe add error handling code
+            return;
+        }
+        
+        [strongSelf updateReportAndProcessNewLinks: maybeResult];
+    };
+    
+    [self->_parserThreadPool parseData: pathToPageContentsFile
+                            forWebPage: webPageUrl
+                            completion: onPageParsed];
+}
+
+-(void)updateReportAndProcessNewLinks:(id<WCPageStats>)newReportItem
+{
+    [self->_report addRecord: newReportItem];
+    
+    NSArray* links = [newReportItem links];
+    for (NSString* singleLink in links)
+    {
+        if ([self->_visitedPages count] >= [self->_settings maxWebPageCount])
+        {
+            break;
+        }
+        else if ([self->_visitedPages containsObject: singleLink])
+        {
+            continue;
+        }
+
+        [self loadPageAsync: singleLink];
+    }
 }
 
 
