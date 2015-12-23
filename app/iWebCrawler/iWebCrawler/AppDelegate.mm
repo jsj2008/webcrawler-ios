@@ -25,7 +25,19 @@
 -(BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    WCSearchModelImpl* model = [WCSearchModelImpl new];
+    
+    NSString* cacheDir = nil;
+    {
+        NSFileManager* fileManager = [NSFileManager defaultManager];
+     
+        // TODO : maybe use documents directory
+        NSArray* urls = [fileManager URLsForDirectory: NSCachesDirectory
+                                            inDomains: NSUserDomainMask];
+        
+        cacheDir = urls[0];
+    }
+    
+    WCSearchModelImpl* model = [[WCSearchModelImpl alloc] initWithCacheDirectory: cacheDir];
     
     UIStoryboard* defaultBoard = [UIStoryboard storyboardWithName: @"Main"
                                                            bundle: nil];

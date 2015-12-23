@@ -12,6 +12,22 @@
 
 @interface WCSearchModelImpl : NSObject<WCSearchModel>
 
+-(instancetype)init NS_UNAVAILABLE;
++(instancetype)new NS_UNAVAILABLE;
+
+-(instancetype)initWithCacheDirectory:(NSString*)cacheDir
+NS_REQUIRES_SUPER
+NS_DESIGNATED_INITIALIZER
+__attribute__((nonnull));
+
+
 @property (nonatomic, readonly) WCSearchStatus status;
+
+-(void)addVmDelegate:(id<WCSearchModelDelegate>)delegate
+__attribute__((nonnull));
+
+-(void)startWithSettings:(id<WCSettingsState>)settings
+__attribute__((nonnull));
+
 
 @end
