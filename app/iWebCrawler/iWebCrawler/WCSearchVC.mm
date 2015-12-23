@@ -118,6 +118,22 @@
     [self.tabBarController setSelectedIndex: 1];
 }
 
+-(void)disableInputs
+{
+    self.searchKeywordInput.enabled = NO;
+    self.urlInput          .enabled = NO;
+    self.threadsSlider     .enabled = NO;
+    self.sitesSlider       .enabled = NO;
+}
+
+-(void)enableInputs
+{
+    self.searchKeywordInput.enabled = YES;
+    self.urlInput          .enabled = YES;
+    self.threadsSlider     .enabled = YES;
+    self.sitesSlider       .enabled = YES;
+}
+
 #pragma mark - User input
 -(IBAction)onStartButtonTapped:(id)sender
 {
@@ -188,6 +204,7 @@
 
 -(void)settingsVMDidStartSearch:(id<WCSettingsVM>)sender
 {
+    [self disableInputs];
     [self updateProgressView];
     [self updateButtonText];
     
@@ -196,6 +213,7 @@
 
 -(void)settingsVMDidFinishSearch:(id<WCSettingsVM>)sender
 {
+    [self enableInputs];
     [self updateProgressView];
     [self updateButtonText];
     
@@ -204,6 +222,7 @@
 
 -(void)settingsVMDidTerminateSearch:(id<WCSettingsVM>)sender
 {
+    [self enableInputs];
     [self updateProgressView];
     [self updateButtonText];
     
