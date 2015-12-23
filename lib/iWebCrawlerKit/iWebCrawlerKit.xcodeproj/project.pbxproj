@@ -44,6 +44,7 @@
 		7E881D761C2B12C5002221DB /* WCPageStatsPOD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCPageStatsPOD.m; sourceTree = "<group>"; };
 		7E881D781C2B162A002221DB /* WCMutableArrayReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCMutableArrayReport.h; sourceTree = "<group>"; };
 		7E881D791C2B162A002221DB /* WCMutableArrayReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCMutableArrayReport.m; sourceTree = "<group>"; };
+		7E881D7B1C2B468B002221DB /* WCParserBlocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCParserBlocks.h; sourceTree = "<group>"; };
 		7E9EEE4B1C285A5400E3BD0C /* libiWebCrawlerKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libiWebCrawlerKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E9EEE4E1C285A5400E3BD0C /* iWebCrawlerKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iWebCrawlerKit.h; sourceTree = "<group>"; };
 		7E9EEE581C285A9700E3BD0C /* WCSettingsVM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCSettingsVM.h; sourceTree = "<group>"; };
@@ -87,6 +88,7 @@
 				7E881D6D1C2B102C002221DB /* WCSearchThread.m */,
 				7E881D6F1C2B10D2002221DB /* WCSearchThreadPool.h */,
 				7E881D701C2B10D2002221DB /* WCSearchThreadPool.m */,
+				7E881D7B1C2B468B002221DB /* WCParserBlocks.h */,
 			);
 			path = Private;
 			sourceTree = "<group>";

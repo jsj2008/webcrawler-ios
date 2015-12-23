@@ -8,11 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-
-typedef void (^WCLoaderCompletionBlock)(
-    NSString* pageUrl,
-    NSString* localPathToPageContents,
-    NSError* error);
+#import "WCParserBlocks.h"
 
 
 @interface WCPageLoader : NSObject

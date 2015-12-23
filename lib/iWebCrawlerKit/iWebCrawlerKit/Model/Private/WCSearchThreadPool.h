@@ -8,12 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol WCPageStats;
-
-typedef void (^WCPageParserCompletionBlock)(
-    id<WCPageStats> maybeResult,
-    NSError* maybeError);
-
+#import "WCParserBlocks.h"
 
 @interface WCSearchThreadPool : NSObject
 
