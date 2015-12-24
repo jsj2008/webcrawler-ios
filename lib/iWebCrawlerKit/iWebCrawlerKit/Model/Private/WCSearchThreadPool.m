@@ -48,20 +48,32 @@
 
 -(BOOL)canParseImmediately
 {
-    return [self->_workingThreadsByUrl count] < self->_maxThreadsCount;
+    @synchronized(self)
+    {
+        return [self->_workingThreadsByUrl count] < self->_maxThreadsCount;
+    }
 }
 
 -(BOOL)shouldCreateNewThread
 {
-    return (0 == [self->_idleThreads count]);
+    @synchronized(self)
+    {
+        return (0 == [self->_idleThreads count]);
+    }
+}
+
+-(BOOL)isPendingTasksExist
+{
+    @synchronized(self)
+    {
+        return 0 != [self->_pendingInput count];
+    }
 }
 
 -(void)parseData:(NSString*)pathToLocalFileWithData
       forWebPage:(NSString*)pageUrl
       completion:(WCPageParserCompletionBlock)completionBlock
 {
-    // TODO : add thread safety
-
     WCParserTaskInfoPOD* inputData = [WCParserTaskInfoPOD new];
     {
         inputData.pageUrl = pageUrl;
@@ -76,7 +88,10 @@
     }
     else
     {
-        [self->_pendingInput addObject: inputData];
+        @synchronized(self)
+        {
+            [self->_pendingInput addObject: inputData];
+        }
     }
 }
 
@@ -103,8 +118,13 @@
 
 -(void)runParsingTaskOnExistingThread:(id<WCParserTaskInfo>)taskInfo
 {
-    WCSearchThread* thread = self->_idleThreads[0];
-    [self->_idleThreads removeObjectAtIndex: 0];
+    WCSearchThread* thread = nil;
+    
+    @synchronized(self)
+    {
+        thread = self->_idleThreads[0];
+        [self->_idleThreads removeObjectAtIndex: 0];
+    }
     
     [self runParsingTask: taskInfo
                 onThread: thread];
@@ -117,8 +137,11 @@
     NSString* pageUrl = [taskInfo pageUrl];
     WCPageParserCompletionBlock originalCallback = [taskInfo completionBlock];
     
+    @synchronized(self)
+    {
+        self->_workingThreadsByUrl[pageUrl] = thread;
+    }
     
-    self->_workingThreadsByUrl[pageUrl] = thread;
 
     
     __weak WCSearchThreadPool* weakSelf = self;
@@ -142,21 +165,29 @@
 
 -(void)consumeFinishedThreadForUrl:(NSString*)webPageUrl
 {
-    NSThread* thread = self->_workingThreadsByUrl[webPageUrl];
-    [self->_workingThreadsByUrl removeObjectForKey: webPageUrl];
-    [self->_idleThreads addObject: thread];
+    @synchronized(self)
+    {
+        NSThread* thread = self->_workingThreadsByUrl[webPageUrl];
+        [self->_workingThreadsByUrl removeObjectForKey: webPageUrl];
+        [self->_idleThreads addObject: thread];
+    }
 }
 
 -(void)tryLaunchPendingTasks
 {
     while
     (
-        0 != [self->_pendingInput count] &&
+        [self isPendingTasksExist] &&
         [self canParseImmediately]
     )
     {
-        id<WCParserTaskInfo> taskInfo = self->_pendingInput[0];
-        [self->_pendingInput removeObjectAtIndex: 0];
+        id<WCParserTaskInfo> taskInfo = nil;
+        
+        @synchronized(self)
+        {
+            taskInfo = self->_pendingInput[0];
+            [self->_pendingInput removeObjectAtIndex: 0];
+        }
         
         [self runParsingTask: taskInfo];
     }
