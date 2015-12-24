@@ -8,10 +8,20 @@
 
 #import "WCSearchThreadPool.h"
 
+#import "WCParserTaskInfo.h"
+#import "WCSearchThread.h"
+
+
+
 @implementation WCSearchThreadPool
 {
     NSString*  _searchTerm;
     NSUInteger _maxThreadsCount;
+    
+    NSMutableDictionary* _workingThreadsByUrl;
+    NSMutableArray* _idleThreads;
+    
+    NSMutableArray* _pendingInput;
 }
 
 -(instancetype)initWithSearchKeyword:(NSString*)searchTerm
@@ -29,14 +39,127 @@
     self->_searchTerm = searchTerm;
     self->_maxThreadsCount = maxThreadsCount;
     
+    self->_workingThreadsByUrl = [NSMutableDictionary new];
+    self->_idleThreads = [NSMutableArray new];
+    self->_pendingInput = [NSMutableArray new];
+    
     return self;
+}
+
+-(BOOL)canParseImmediately
+{
+    return [self->_workingThreadsByUrl count] < self->_maxThreadsCount;
+}
+
+-(BOOL)shouldCreateNewThread
+{
+    return (0 == [self->_idleThreads count]);
 }
 
 -(void)parseData:(NSString*)pathToLocalFileWithData
       forWebPage:(NSString*)pageUrl
       completion:(WCPageParserCompletionBlock)completionBlock
 {
-    NSAssert(NO, @"not implemented");
+    // TODO : add thread safety
+
+    WCParserTaskInfoPOD* inputData = [WCParserTaskInfoPOD new];
+    {
+        inputData.pageUrl = pageUrl;
+        inputData.pathToLocalFileWithData = pathToLocalFileWithData;
+        inputData.completionBlock = completionBlock;
+    }
+
+    
+    if ([self canParseImmediately])
+    {
+        [self runParsingTask: inputData];
+    }
+    else
+    {
+        [self->_pendingInput addObject: inputData];
+    }
 }
 
+-(void)runParsingTask:(id<WCParserTaskInfo>)taskInfo
+{
+    if ([self shouldCreateNewThread])
+    {
+        [self runParsingTaskOnNewThread: taskInfo];
+    }
+    else
+    {
+        [self runParsingTaskOnExistingThread: taskInfo];
+    }
+}
+
+-(void)runParsingTaskOnNewThread:(id<WCParserTaskInfo>)taskInfo
+{
+    WCSearchThread* thread = [[WCSearchThread alloc] initWithSearchTerm: self->_searchTerm];
+    [thread start];
+    
+    [self runParsingTask: taskInfo
+                onThread: thread];
+}
+
+-(void)runParsingTaskOnExistingThread:(id<WCParserTaskInfo>)taskInfo
+{
+    WCSearchThread* thread = self->_idleThreads[0];
+    [self->_idleThreads removeObjectAtIndex: 0];
+    
+    [self runParsingTask: taskInfo
+                onThread: thread];
+    
+}
+
+-(void)runParsingTask:(id<WCParserTaskInfo>)taskInfo
+             onThread:(WCSearchThread*)thread
+{
+    NSString* pageUrl = [taskInfo pageUrl];
+    WCPageParserCompletionBlock originalCallback = [taskInfo completionBlock];
+    
+    
+    self->_workingThreadsByUrl[pageUrl] = thread;
+
+    
+    __weak WCSearchThreadPool* weakSelf = self;
+    WCPageParserCompletionBlock hookedCallback =
+    ^void(NSString *webPageUrl, id<WCPageStats> maybeResult, NSError *maybeError)
+    {
+        WCSearchThreadPool* strongSelf = weakSelf;
+        
+        [strongSelf consumeFinishedThreadForUrl: webPageUrl];
+        [strongSelf tryLaunchPendingTasks];
+        
+        originalCallback(webPageUrl, maybeResult, maybeError);
+    };
+    
+    
+    [thread parseWebPage: pageUrl
+                contents: [taskInfo pathToLocalFileWithData]
+                callback: hookedCallback];
+
+}
+
+-(void)consumeFinishedThreadForUrl:(NSString*)webPageUrl
+{
+    NSThread* thread = self->_workingThreadsByUrl[webPageUrl];
+    [self->_workingThreadsByUrl removeObjectForKey: webPageUrl];
+    [self->_idleThreads addObject: thread];
+}
+
+-(void)tryLaunchPendingTasks
+{
+    while
+    (
+        0 != [self->_pendingInput count] &&
+        [self canParseImmediately]
+    )
+    {
+        id<WCParserTaskInfo> taskInfo = self->_pendingInput[0];
+        [self->_pendingInput removeObjectAtIndex: 0];
+        
+        [self runParsingTask: taskInfo];
+    }
+}
+    
 @end
